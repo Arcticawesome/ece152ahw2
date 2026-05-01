@@ -8,12 +8,7 @@ module muxes (
 
     assign xor_out = a_i ^ b_i;
 
-    always_comb begin
-        case (sel4_i[0])
-            1'b0: y0_o = xor_out;
-            1'b1: y0_o = c_i;
-        endcase
-    end
+    assign y0_o = (sel4_i[0]) ? c_i : xor_out;
 
     always_comb begin
         case (sel4_i)
@@ -21,6 +16,7 @@ module muxes (
             2'b01: y1_o = c_i;
             2'b10: y1_o = 1'b0;
             2'b11: y1_o = d_i;
+            default: y1_o = 1'b0;
         endcase
     end
 
