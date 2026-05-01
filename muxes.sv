@@ -8,7 +8,7 @@ module muxes (
 
     assign xor_out = a_i ^ b_i;
 
-    assign y0_o = (sel4_i[1]) ? c_i : xor_out;
+    assign y0_o = (xor_out) ? c_i : d_i;
 
     always_comb begin
         case (sel4_i)
